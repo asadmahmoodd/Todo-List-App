@@ -1,0 +1,165 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width:600px)
+{
+    #main-container {
+        max-width: 90vw !important;
+        max-height: 90vh !important;
+        margin: auto;
+    }
+    .tasks{
+        padding: 1rem !important;
+    }
+
+}
+#main-container {
+    justify-self: center;
+    background-color: rgb(231, 235, 240);
+    padding: 2%;
+    max-width: 500px;
+    width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.file{
+font-size: 1.5rem;
+}
+.tick{
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+}
+.trash{
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.tick:hover{
+transform: scale(1.2);
+}
+
+.trash:hover{
+color: red;
+transform: scale(1.2);
+}
+
+.task-btns{
+    display: flex;
+    align-items: center;
+    gap:0.7rem;
+    padding-right: 0.3rem;
+    font-size: larger;
+    border-radius: 15px;
+}
+.tasks:hover{
+   outline: solid 1px rgba(26, 26, 207, 0.725);
+   transform: scale(1.009);
+}
+.tasks{
+    margin: 0.6rem ;
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    transition: transform 0.5s ease;
+    border-radius:15px ;
+    
+}
+.task-para{
+    display: inline;
+}
+#heading {
+    text-align: center;
+    margin: 3%;
+    margin: 0%;
+    margin-bottom: 1.5rem;
+}
+
+#count-text {
+    text-align: center;
+    margin: 0%;
+    align-self: center;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+
+}
+
+.btn{
+    transition: all 0.5s ;
+}
+
+#tasks-container{
+    margin-top: 1rem;
+    max-height: 450px;
+overflow-y: auto;
+
+
+     
+}
+
+#input-box {
+  background-color: white;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    outline: none;
+    box-shadow: 0 0 20px 2px gray;
+    border-radius:20px ;    
+
+}
+
+#input-box:focus-within
+{  
+    outline: solid 2px rgba(26, 26, 207, 0.725);
+}
+
+#input {
+    border: none;
+    height: 2rem;
+    padding: 1%;
+    outline: none;
+    width: 100%;
+}
+#taskCount{
+   
+    background-color: white;
+    padding: 2%;
+    box-shadow: 0 0 20px 2px gray;
+    display: flex; 
+    justify-content: space-between;
+    height: auto;
+    margin-top: 0.7rem;
+    border-radius: 15px;    
+}
+#addbtn {
+   
+    border: none;
+    background-color:rgba(26, 26, 207, 0.725);
+    cursor: pointer;
+    border-radius:7px;
+    color: white;
+    font-weight: bold;
+    padding: 2% 6%;
+    cursor: pointer;
+}
+
+#delbtn{
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius:5px ;
+    padding: 3% 6%;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
