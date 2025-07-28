@@ -19,11 +19,11 @@ body{
 #main-container {
     justify-self: center;
     background-color: rgb(231, 235, 240);
-    padding: 2%;
+    padding: 0% 2%;
     max-width: 500px;
     width: 100%;
-    min-height: 650px;
-    max-height: 650px;
+    /* min-height: 650px; */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
@@ -139,7 +139,8 @@ overflow-y: auto;
     justify-content: space-between;
     height: auto;
     margin-top: 0.7rem;
-    border-radius: 15px;    
+    border-radius: 15px;   
+    margin-bottom:2% ; 
 }
 #addbtn {
     border: none;
@@ -151,6 +152,8 @@ overflow-y: auto;
     padding: 2% 6%;
     cursor: pointer;
 }
+
+
 
 #delbtn{
     background-color: red;
