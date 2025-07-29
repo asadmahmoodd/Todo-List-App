@@ -171,13 +171,16 @@ task_click.addEventListener("click", (e) =>
         let edit_input;
         do{
         edit_input = prompt("Enter the New Task Name")
+        if(edit_input!=null)
         edit_input=edit_input.trim();
         }while(edit_input=="")
-        
+        if(edit_input!=null)
+        {
         element.input = edit_input;
         const todoSTR = JSON.stringify(todo);
         localStorage.setItem("Todo", todoSTR);
-       e.target.parentNode.children[1].innerHTML=edit_input;
+        e.target.parentNode.children[1].innerHTML=edit_input;
+        }
       }
     });
   }
