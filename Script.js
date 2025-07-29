@@ -63,11 +63,13 @@ function Load()
   }
 }
 
-const addbtn = document.getElementById("addbtn");
-addbtn.addEventListener("click", () =>
+
+function addTask()
 {
-  const input = document.getElementById("input");
-  if (input.value === "")
+  let input = document.getElementById("input");
+  let input_val=input.value.trim();
+  
+  if (input_val == "")
   {
     alert("Task Cant Be Empty");
   }
@@ -96,7 +98,7 @@ addbtn.addEventListener("click", () =>
         }
       } while (check == true)
     }
-    todo.push(new todoObj(input.value, false, globalid));
+    todo.push(new todoObj(input_val, false, globalid));
     localStorage.clear();
     const todoSTR = JSON.stringify(todo);
     localStorage.setItem("Todo", todoSTR);
@@ -120,7 +122,22 @@ addbtn.addEventListener("click", () =>
 
     input.value = "";
   }
+}
+
+
+const addbtn = document.getElementById("addbtn");
+addbtn.addEventListener("click", ()=>{addTask()});
+
+const input_event=document.getElementById("input");
+input_event.addEventListener("keypress",(e)=>
+{
+  if(e.key=="Enter")
+  {
+    addTask();
+  }
+
 });
+
 
 let task_click = document.getElementById("tasks-container");
 task_click.addEventListener("click", (e) =>
@@ -151,11 +168,16 @@ task_click.addEventListener("click", (e) =>
     {
       if (element.id == e.target.parentNode.parentNode.id)
       {
-        let edit_input = prompt("Enter the New Task Name")
+        let edit_input;
+        do{
+        edit_input = prompt("Enter the New Task Name")
+        edit_input=edit_input.trim();
+        }while(edit_input=="")
+        
         element.input = edit_input;
         const todoSTR = JSON.stringify(todo);
         localStorage.setItem("Todo", todoSTR);
-        document.get
+       e.target.parentNode.children[1].innerHTML=edit_input;
       }
     });
   }
@@ -208,6 +230,10 @@ function todoObj(input, complete, id)
   this.id = id;
 }
 
+const form=document.getElementById("form");
+ form.addEventListener('submit', function (event) {
+        event.preventDefault();
+ });
 
 function darkmode()
 {
