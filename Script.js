@@ -1,9 +1,17 @@
 let globalid = 0;
 let todo = [];
+let dark =false;
 Load();
 
 function Load()
 {
+ 
+  const darkstr=localStorage.getItem("dark");
+  dark=JSON.parse(darkstr);
+  if(dark)
+    document.body.classList.toggle("dark-mode");
+
+
   const taskscon = document.getElementById("tasks-container");
 
   const localSTR = localStorage.getItem("Todo");
@@ -99,7 +107,6 @@ function addTask()
       } while (check == true)
     }
     todo.push(new todoObj(input_val, false, globalid));
-    localStorage.clear();
     const todoSTR = JSON.stringify(todo);
     localStorage.setItem("Todo", todoSTR);
 
@@ -239,6 +246,12 @@ const form=document.getElementById("form");
  });
 
 function darkmode()
-{
+{   
+  if(dark)
+    dark=false;
+  else
+    dark=true
+
+  localStorage.setItem("dark",dark);
   document.body.classList.toggle("dark-mode");
 }
