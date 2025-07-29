@@ -12,7 +12,7 @@ function Load()
   if (todo != null)
   {
     todo.forEach((e) =>
-    {
+      {
         let newdiv = document.createElement("div");
         newdiv.classList.add("tasks");
         newdiv.id = e.id;
@@ -32,7 +32,7 @@ function Load()
         else
         {
           newdiv.innerHTML = ` <div>
-                   <i class="fa-solid fa-file-circle-check file"></i>
+                   <i class="fa-solid fa-pen-to-square fa-lg edit"></i>
                         <p class="task-para">${e.input}</p>
                     </div>
                     <div class="task-btns">
@@ -42,9 +42,9 @@ function Load()
         }
 
         taskscon.append(newdiv);
-        const taskcount=document.getElementById("count-text");
-        taskcount.innerHTML=`Total Task:${todo.length}`
-        globalid=todo.length;
+        const taskcount = document.getElementById("count-text");
+        taskcount.innerHTML = `Total Task:${todo.length}`
+        globalid = todo.length;
 
       }
 
@@ -53,12 +53,12 @@ function Load()
   }
   else
   {
-    if(taskscon.childElementCount>0)
+    if (taskscon.childElementCount > 0)
     {
-      taskscon.innerHTML="";
-      const taskcount=document.getElementById("count-text");
-      taskcount.innerHTML=`Total Task:0`
-      globalid=0;
+      taskscon.innerHTML = "";
+      const taskcount = document.getElementById("count-text");
+      taskcount.innerHTML = `Total Task:0`
+      globalid = 0;
     }
   }
 }
@@ -73,28 +73,28 @@ addbtn.addEventListener("click", () =>
   }
   else
   {
-    if(todo==null)
-      todo=[];
-     globalid++;
-    let check=false;
-    if(todo!=[])
+    if (todo == null)
+      todo = [];
+    globalid++;
+    let check = false;
+    if (todo != [])
     {
-      
-      do{
-      for(let i=0;i<todo.length;++i)
-      {
-        if(todo[i].id==globalid)
+
+      do {
+        for (let i = 0; i < todo.length; ++i)
         {
-          globalid++;
-          check=true;
-          break;
+          if (todo[i].id == globalid)
+          {
+            globalid++;
+            check = true;
+            break;
+          }
+          else
+          {
+            check = false;
+          }
         }
-        else
-        {
-          check=false;
-        }
-      }
-     }while(check==true)
+      } while (check == true)
     }
     todo.push(new todoObj(input.value, false, globalid));
     localStorage.clear();
@@ -107,7 +107,7 @@ addbtn.addEventListener("click", () =>
     newdiv.classList.add("tasks");
     newdiv.id = globalid;
     newdiv.innerHTML = ` <div>
-                   <i class="fa-solid fa-file-circle-check file"></i>
+                   <i class="fa-solid fa-pen-to-square fa-lg edit"></i>
                         <p class="task-para">${input.value}</p>
                     </div>
                     <div class="task-btns">
@@ -115,8 +115,8 @@ addbtn.addEventListener("click", () =>
                         <i class="fa-solid fa-trash trash"></i>
                     </div>`;
     taskscon.appendChild(newdiv);
-     const taskcount=document.getElementById("count-text");
-    taskcount.innerHTML=`Total Task:${todo.length}`
+    const taskcount = document.getElementById("count-text");
+    taskcount.innerHTML = `Total Task:${todo.length}`
 
     input.value = "";
   }
@@ -141,10 +141,25 @@ task_click.addEventListener("click", (e) =>
     todo.splice(Dindex, 1);
     const todoSTR = JSON.stringify(todo);
     localStorage.setItem("Todo", todoSTR);
-    const taskcount=document.getElementById("count-text");
-    taskcount.innerHTML=`Total Task:${todo.length}`
+    const taskcount = document.getElementById("count-text");
+    taskcount.innerHTML = `Total Task:${todo.length}`
   }
-  
+
+  if (e.target.classList.contains("edit"))
+  {
+    todo.forEach((element) =>
+    {
+      if (element.id == e.target.parentNode.parentNode.id)
+      {
+        let edit_input = prompt("Enter the New Task Name")
+        element.input = edit_input;
+        const todoSTR = JSON.stringify(todo);
+        localStorage.setItem("Todo", todoSTR);
+        document.get
+      }
+    });
+  }
+
   if (e.target.classList.contains("tick"))
   {
     todo.forEach((element) =>
@@ -155,14 +170,14 @@ task_click.addEventListener("click", (e) =>
         {
           element.complete = false;
           e.target.style.color = "";
-          e.target.parentNode.parentNode.children[0].innerHTML = ` <i class="fa-solid fa-file-circle-check file"></i>
+          e.target.parentNode.parentNode.children[0].innerHTML = ` <i class="fa-solid fa-pen-to-square fa-lg edit"></i>
                         <p class="task-para">${element.input}</p>`;
         }
         else
         {
           element.complete = true;
           e.target.style.color = "green";
-          
+
           e.target.parentNode.parentNode.children[0].innerHTML = `<i style="color: green" class="fa-solid fa-file-circle-check file"></i>
                         <strike style="color: green">
                             <p class="task-para">${element.input}</p>
@@ -175,21 +190,26 @@ task_click.addEventListener("click", (e) =>
   }
 });
 
-const delbtn=document.getElementById("delbtn");
-delbtn.addEventListener("click",()=>
+const delbtn = document.getElementById("delbtn");
+delbtn.addEventListener("click", () =>
 {
-  let isConfirm=confirm("Are you sure you want to delete all tasks!");
-  if(isConfirm)
+  let isConfirm = confirm("Are you sure you want to delete all tasks!");
+  if (isConfirm)
   {
-  localStorage.clear();
-  Load();
+    localStorage.clear();
+    Load();
   }
-}
-);
+});
 
 function todoObj(input, complete, id)
 {
   this.input = input;
   this.complete = complete;
   this.id = id;
+}
+
+
+function darkmode()
+{
+  document.body.classList.toggle("dark-mode");
 }

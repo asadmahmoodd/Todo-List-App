@@ -9,14 +9,19 @@
     <title>To DO List</title>
 </head>
 
-<body>
-    <div id="main-container">
-        <div id="Upper-container">
-            <h2 id="heading">MyTodo List</h2>
-            <div id="input-box">
-                <input required id="input" type="text" placeholder="Enter Your Task...." />
-                <button id="addbtn" class="btn">Add</button>
+<body id="body" >
+    <div id="main-container" >
+        <div id="Upper-container" >
+            <div id="header" >
+                    <h2 id="heading">MyTodo List</h2>
+                    <i onclick="darkmode()" id="dark" class="fa-solid fa-circle-half-stroke  fa-lg "></i>
             </div>
+            <form>
+                    <div id="input-box" >
+                    <input required id="input" type="text" placeholder="Enter Your Task...." />
+                    <button  id="addbtn" class="btn">Add</button>
+                </div>
+                </form>
             <div id="tasks-container">
             </div>
         </div>
