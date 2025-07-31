@@ -172,6 +172,7 @@ overflow-y: auto;
     padding: 1%;
     outline: none;
     width: 100%;
+    touch-action: manipulation;
 }
 #taskCount{
    
